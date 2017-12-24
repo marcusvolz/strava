@@ -7,8 +7,16 @@ library(tidyverse)
 # Read in pre-processed data
 data <- readRDS("processed/data.RDS")
 
+summary <- data %>% group_by(id) %>%
+  summarise(
+    lon = mean(range(lon)),
+    lat = mean(range(lat)),
+    distance = sprintf("%.1f", max(cumdist))
+  )
+
 # Create plot
 p <- ggplot() +
+  geom_text(aes(lon, lat, label = distance), data = summary, alpha = 0.25, size = 3) +
   geom_path(aes(lon, lat, group = id), data, size = 0.35, lineend = "round") +
   facet_wrap(~id, scales = "free") +
   theme_blankcanvas(margin_cm = 1) +
