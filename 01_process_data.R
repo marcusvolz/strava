@@ -24,6 +24,11 @@ process_gpx <- function(file) {
                          useInternalNodes = TRUE)
   
   coords <- xpathSApply(pfile, path = "//trkpt", xmlAttrs)
+  #
+  # Check for empty file.
+  #
+  if (length(coords) == 0) return(NULL)
+  #
   lat <- as.numeric(coords["lat", ])
   lon <- as.numeric(coords["lon", ])
   ele <- as.numeric(xpathSApply(pfile, path = "//trkpt/ele", xmlValue))
@@ -44,5 +49,6 @@ data <- paste("data/", list.files(path = "data/", pattern = "*.gpx"), sep = "") 
   map_df(process_gpx, .id = "id") %>%
   mutate(id = as.integer(id))
 
+dir.create("processed")
 # Write data to file
 saveRDS(data, "processed/data.RDS")
