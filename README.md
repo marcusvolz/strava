@@ -1,2 +1,2 @@
 # strava
-Analysis of running data
+Artistic visualisations of Strava activity data
