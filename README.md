@@ -1,6 +1,6 @@
 # Strava
 
-Artistic visualisations of Strava activity data
+Artistic visualisations with your Strava exercise data
 
 ## Examples
 
@@ -10,7 +10,7 @@ Artistic visualisations of Strava activity data
 
 ### Map
 
-![map](https://github.com/marcusvolz/strava/blob/master/plots/map001.png "Map, showing activites on a map")
+![map](https://github.com/marcusvolz/strava/blob/master/plots/map001.png "Map, showing activities on a map")
 
 ## How to use
 
@@ -21,28 +21,32 @@ Artistic visualisations of Strava activity data
 3. Select "Download all your activities" from lower right of screen
 4. Wait for an email to be sent
 5. Click the link in email to download zipped folder containing activities
-6. Unzip files into data folder
+6. Unzip files
 
-### Install R packages
+### Install strava package
 
 For example:
 
 ```bash
-$ R
-```
-```r
-install.packages(c("sp", "XML", "tidyverse", "devtools"))
-devtools::install_github("marcusvolz/ggart")
-quit()
-Save workspace image? [y/n/c]: n
+devtools::install_github("marcusvolz/strava")
 ```
 
-### Run the scripts
+### To process the data
 
 ```bash
-mkdir processed
-Rscript 01_process_data.R
-Rscript 02_plot_run_facets.R
-Rscript 03_plot_run_map.R
-open plots/*.png
+data <- process_data("strava__/data")
+```
+
+### To create activities as small multiples
+
+```bash
+p1 <- plot_facets(data)
+ggsave("plots/facets001.png", p1, width = 20, height = 20, units = "cm")
+```
+
+### To create an activity map
+
+```bash
+p2 <- plot_map(data, lon_min = 144.9, lon_max = 145.73, lat_min = -37.475, lat_max = -38.1)
+ggsave("plots/map001.png", p2, width = 20, height = 15, units = "cm", dpi = 600)
 ```
