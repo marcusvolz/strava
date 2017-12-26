@@ -25,8 +25,6 @@ Artistic visualisations with your Strava exercise data
 
 ### Install the package
 
-For example:
-
 ```bash
 devtools::install_github("marcusvolz/strava")
 ```
