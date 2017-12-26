@@ -23,7 +23,7 @@ Artistic visualisations with your Strava exercise data
 5. Click the link in email to download zipped folder containing activities
 6. Unzip files
 
-### Install strava package
+### Install the package
 
 For example:
 
@@ -31,20 +31,20 @@ For example:
 devtools::install_github("marcusvolz/strava")
 ```
 
-### To process the data
+### Process the data
 
 ```bash
-data <- process_data("strava__/data")
+data <- process_data(<gpx file path>)
 ```
 
-### To create activities as small multiples
+### Plot activities as small multiples
 
 ```bash
 p1 <- plot_facets(data)
 ggsave("plots/facets001.png", p1, width = 20, height = 20, units = "cm")
 ```
 
-### To create an activity map
+### Plot activity map
 
 ```bash
 p2 <- plot_map(data, lon_min = 144.9, lon_max = 145.73, lat_min = -37.475, lat_max = -38.1)
