@@ -15,7 +15,7 @@ plot_map <- function(data, lon_min = 0, lon_max = Inf, lat_min = 0, lat_max = In
   # Create plot
   p <- ggplot2::ggplot() +
     ggplot2::geom_path(ggplot2::aes(lon, lat, group = id),
-              data %>% dplyr::filter(lon > lon_min, lon < lon_max, lat < lat_min, lat > lat_max),
+              data %>% dplyr::filter(lon > lon_min, lon < lon_max, lat > lat_min, lat < lat_max),
               alpha = 0.3, size = 0.3, lineend = "round") +
     ggplot2::coord_equal() +
     ggplot2::theme_void()
