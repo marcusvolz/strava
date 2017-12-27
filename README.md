@@ -1,6 +1,6 @@
 # Strava
 
-Artistic visualisations with your Strava exercise data
+Create artistic visualisations with your Strava exercise data
 
 ## Examples
 
@@ -11,6 +11,10 @@ Artistic visualisations with your Strava exercise data
 ### Map
 
 ![map](https://github.com/marcusvolz/strava/blob/master/plots/map001.png "Map, showing activities on a map")
+
+### Elevations
+
+![map](https://github.com/marcusvolz/strava/blob/master/plots/elevations001.png "Facets, showing elevation profiles")
 
 ## How to use
 
@@ -47,4 +51,11 @@ ggsave("plots/facets001.png", p1, width = 20, height = 20, units = "cm")
 ```bash
 p2 <- plot_map(data, lon_min = 144.9, lon_max = 145.73, lat_min = -37.475, lat_max = -38.1)
 ggsave("plots/map001.png", p2, width = 20, height = 15, units = "cm", dpi = 600)
+```
+
+### Plot elevation profiles
+
+```bash
+p3 <- plot_elevations(data)
+ggsave("plots/elevations001.png", p3, width = 20, height = 20, units = "cm")
 ```
