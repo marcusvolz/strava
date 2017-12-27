@@ -49,7 +49,7 @@ ggsave("plots/facets001.png", p1, width = 20, height = 20, units = "cm")
 ### Plot activity map
 
 ```bash
-p2 <- plot_map(data, lon_min = 144.9, lon_max = 145.73, lat_min = -37.475, lat_max = -38.1)
+p2 <- plot_map(data, lon_min = 144.9, lon_max = 145.73, lat_min = -38.1, lat_max = -37.475)
 ggsave("plots/map001.png", p2, width = 20, height = 15, units = "cm", dpi = 600)
 ```
 
