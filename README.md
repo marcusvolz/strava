@@ -16,6 +16,10 @@ Create artistic visualisations with your Strava exercise data
 
 ![map](https://github.com/marcusvolz/strava/blob/master/plots/elevations001.png "Facets, showing elevation profiles")
 
+### Calendar
+
+![map](https://github.com/marcusvolz/strava/blob/master/plots/calendar001.png "Calendar map")
+
 ## How to use
 
 ### Bulk export from Strava
@@ -59,3 +63,7 @@ ggsave("plots/map001.png", p2, width = 20, height = 15, units = "cm", dpi = 600)
 p3 <- plot_elevations(data)
 ggsave("plots/elevations001.png", p3, width = 20, height = 20, units = "cm")
 ```
+
+### Plot Calendar
+
+See the following gist: https://gist.github.com/marcusvolz/84d69befef8b912a3781478836db9a75
