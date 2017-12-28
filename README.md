@@ -31,35 +31,43 @@ Create artistic visualisations with your Strava exercise data
 5. Click the link in email to download zipped folder containing activities
 6. Unzip files
 
-### Install the package
+### Install the packages
 
-```bash
+```R
+install.packages(c("tidyverse", "devtools"))
 devtools::install_github("marcusvolz/strava")
+```
+
+### Load the libraries
+
+```R
+library(strava)
+library(tidyverse)
 ```
 
 ### Process the data
 
-```bash
+```R
 data <- process_data(<gpx file path>)
 ```
 
 ### Plot activities as small multiples
 
-```bash
+```R
 p1 <- plot_facets(data)
 ggsave("plots/facets001.png", p1, width = 20, height = 20, units = "cm")
 ```
 
 ### Plot activity map
 
-```bash
+```R
 p2 <- plot_map(data, lon_min = 144.9, lon_max = 145.73, lat_min = -38.1, lat_max = -37.475)
 ggsave("plots/map001.png", p2, width = 20, height = 15, units = "cm", dpi = 600)
 ```
 
 ### Plot elevation profiles
 
-```bash
+```R
 p3 <- plot_elevations(data)
 ggsave("plots/elevations001.png", p3, width = 20, height = 20, units = "cm")
 ```
