@@ -20,6 +20,10 @@ Create artistic visualisations with your Strava exercise data
 
 ![map](https://github.com/marcusvolz/strava/blob/master/plots/calendar001.png "Calendar map")
 
+### Ridges
+
+![map](https://github.com/marcusvolz/strava/blob/master/plots/ridges001.png "Ridges")
+
 ## How to use
 
 ### Bulk export from Strava
@@ -75,3 +79,7 @@ ggsave("plots/elevations001.png", p3, width = 20, height = 20, units = "cm")
 ### Plot Calendar
 
 See the following gist: https://gist.github.com/marcusvolz/84d69befef8b912a3781478836db9a75
+
+### Plot Ridges
+
+See the following gist: https://gist.github.com/marcusvolz/854f3bab1f63aa8a938b5026820682fa
