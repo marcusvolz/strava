@@ -19,7 +19,9 @@ process_data <- function(path) {
 
     # Check for empty file.
     if (length(coords) == 0) return(NULL)
-    #
+    # dist_to_prev computation requires that there be at least two coordinates.
+    if (ncol(coords) < 2) return(NULL)
+
     lat <- as.numeric(coords["lat", ])
     lon <- as.numeric(coords["lon", ])
     ele <- as.numeric(XML::xpathSApply(pfile, path = "//trkpt/ele", XML::xmlValue))
