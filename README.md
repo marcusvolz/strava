@@ -38,7 +38,7 @@ Create artistic visualisations with your Strava exercise data
 ### Install the packages
 
 ```R
-install.packages(c("tidyverse", "devtools"))
+install.packages(c("devtools", "mapproj", "tidyverse"))
 devtools::install_github("marcusvolz/strava")
 ```
 
