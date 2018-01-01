@@ -24,6 +24,10 @@ Create artistic visualisations with your Strava exercise data
 
 ![map](https://github.com/marcusvolz/strava/blob/master/plots/ridges001.png "Ridges")
 
+### Packed circles
+
+![map](https://github.com/marcusvolz/strava/blob/master/plots/circles001.png "Packed circles")
+
 ## How to use
 
 ### Bulk export from Strava
@@ -83,3 +87,7 @@ See the following gist: https://gist.github.com/marcusvolz/84d69befef8b912a37814
 ### Plot Ridges
 
 See the following gist: https://gist.github.com/marcusvolz/854f3bab1f63aa8a938b5026820682fa
+
+### Plot Ridges
+
+Code to come.
