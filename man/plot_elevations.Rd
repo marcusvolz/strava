@@ -4,10 +4,12 @@
 \alias{plot_elevations}
 \title{Creates a plot of elevation profiles as small multiples}
 \usage{
-plot_elevations(data)
+plot_elevations(data, scale_free_y = FALSE)
 }
 \arguments{
 \item{data}{A data frame output from process_data()}
+
+\item{scale_free_y}{If TRUE, the y-scale is "free"; otherwise it is "fixed"}
 }
 \description{
 Creates a plot of elevation profiles as small multiples
