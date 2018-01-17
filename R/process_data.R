@@ -31,7 +31,7 @@ process_data <- function(path) {
     result <- data.frame(lat = lat, lon = lon, ele = ele, time = time) %>%
       dplyr::mutate(dist_to_prev = c(0, sp::spDists(x = as.matrix(.[, c("lon", "lat")]), longlat = TRUE, segments = TRUE)),
              cumdist = cumsum(dist_to_prev),
-             time = as.POSIXct(.$time, format = "%Y-%m-%dT%H:%M:%OS")) %>%
+             time = as.POSIXct(.$time, tz = "GMT", format = "%Y-%m-%dT%H:%M:%OS")) %>%
       dplyr::mutate(time_diff_to_prev = as.numeric(difftime(time, dplyr::lag(time, default = .$time[1]))),
              cumtime = cumsum(time_diff_to_prev))
     result
