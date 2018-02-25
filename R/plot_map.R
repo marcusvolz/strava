@@ -11,7 +11,7 @@
 #' @examples
 #' plot_map()
 
-plot_map <- function(data, lon_min = 0, lon_max = Inf, lat_min = 0, lat_max = Inf) {
+plot_map <- function(data, lon_min = -180, lon_max = 180, lat_min = -90, lat_max = 90) {
   # Create plot
   p <- ggplot2::ggplot() +
     ggplot2::geom_path(ggplot2::aes(lon, lat, group = id),
