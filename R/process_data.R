@@ -16,7 +16,11 @@ process_data <- function(path) {
                            useInternalNodes = TRUE)
 
     coords <- XML::xpathSApply(pfile, path = "//trkpt", XML::xmlAttrs)
-
+    # extract the correct id from file name
+    id <- file %>%
+      stringr::str_extract("\\d+\\.gpx") %>%
+      stringr::str_extract("\\d+") %>%
+      as.integer()
     # Check for empty file.
     if (length(coords) == 0) return(NULL)
     # dist_to_prev computation requires that there be at least two coordinates.
@@ -28,7 +32,7 @@ process_data <- function(path) {
     time <- XML::xpathSApply(pfile, path = "//trkpt/time", XML::xmlValue)
 
     # Put everything in a data frame
-    result <- data.frame(lat = lat, lon = lon, ele = ele, time = time) %>%
+    result <- data.frame(lat = lat, lon = lon, ele = ele, time = time, id = id) %>%
       dplyr::mutate(dist_to_prev = c(0, sp::spDists(x = as.matrix(.[, c("lon", "lat")]), longlat = TRUE, segments = TRUE)),
              cumdist = cumsum(dist_to_prev),
              time = as.POSIXct(.$time, tz = "GMT", format = "%Y-%m-%dT%H:%M:%OS")) %>%
@@ -39,6 +43,5 @@ process_data <- function(path) {
 
   # Process all the files
   data <- list.files(path = path, pattern = "*.gpx", full.names = TRUE) %>%
-    purrr::map_df(process_gpx, .id = "id") %>%
-    dplyr::mutate(id = as.integer(id))
+    purrr::map_df(process_gpx)
 }
