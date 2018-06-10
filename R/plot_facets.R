@@ -1,6 +1,6 @@
 #' Creates a plot of activities as small multiples
 #'
-#' Creates a plot of activities as small multiples
+#' Creates a plot of activities as small multiples. The concept behind this plot was originally inspired by \href{https://www.madewithsisu.com/}{Sisu}.
 #' @param data A data frame output from process_data()
 #' @param labels If TRUE, adds distance labels to each facet
 #' @keywords

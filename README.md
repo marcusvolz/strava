@@ -6,6 +6,8 @@ Create artistic visualisations with your Strava exercise data
 
 ### Facets
 
+A plot of activities as small multiples. The concept behind this plot was originally inspired by [Sisu](https://www.madewithsisu.com/).
+
 ![facets](https://github.com/marcusvolz/strava/blob/master/plots/facets001.png "Facets, showing activity outlines")
 
 ### Map
