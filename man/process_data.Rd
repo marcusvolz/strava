@@ -10,7 +10,7 @@ process_data(path)
 \item{path}{The file path to the directory containing the gpx files}
 }
 \description{
-Processes gpx files and stores the result in a data frame
+Processes gpx files and stores the result in a data frame. The code is adapted from the blog post \href{https://rcrastinate.blogspot.com/2014/09/stay-on-track-plotting-gps-tracks-with-r.html}{Stay on track: Plotting GPS tracks with R} by Sascha W.
 }
 \examples{
 process_data()

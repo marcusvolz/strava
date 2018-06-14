@@ -4,7 +4,8 @@
 \alias{plot_map}
 \title{Plots activities superimposed on a map}
 \usage{
-plot_map(data, lon_min = 0, lon_max = Inf, lat_min = 0, lat_max = Inf)
+plot_map(data, lon_min = -180, lon_max = 180, lat_min = -90,
+  lat_max = 90)
 }
 \arguments{
 \item{data}{A data frame output from process_data()}
