@@ -33,13 +33,16 @@ A plot of activities as small multiples. The concept behind this plot was origin
 ## How to use
 
 ### Bulk export from Strava
+The process for downloading data is described on the Strava website here: [https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export#Bulk], but in essence, do the following:
 
 1. Log in to [Strava](https://www.strava.com/)
 2. Select "[Settings](https://www.strava.com/settings/profile)" from the main drop-down menu at top right of the screen
-3. Select "Download all your activities" from lower right of screen
-4. Wait for an email to be sent
-5. Click the link in email to download zipped folder containing activities
-6. Unzip files
+3. Select "[My Account](https://www.strava.com/account)" from the navigation menu to the left of the screen.
+4. Under the "[Download or Delete Your Account](https://www.strava.com/athlete/delete_your_account)" heading, click the "Get Started" button.
+5. Under the "Download Request", heading, click the "Request Your Archive" button. ***Don't click anything else on that page, i.e. particularly not the "Request Account Deletion" button.***
+6. Wait for an email to be sent
+7. Click the link in email to download zipped folder containing activities
+8. Unzip files
 
 ### Install the packages
 
