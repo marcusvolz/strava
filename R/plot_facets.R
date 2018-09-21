@@ -36,6 +36,10 @@ plot_facets <- function(data, labels = FALSE, scales = "free") {
                    strip.background = ggplot2::element_blank(),
                    strip.text = ggplot2::element_blank(),
                    plot.margin = ggplot2::unit(rep(1, 4), "cm"))
+  
+  if (scales == "fixed") {
+    p <- p + ggplot2::coord_fixed() # make aspect ratio == 1
+  }
 
   # Add labels
   if(labels) {
