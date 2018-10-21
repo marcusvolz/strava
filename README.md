@@ -60,6 +60,8 @@ library(tidyverse)
 
 ### Process the data
 
+Note: Strava changed the way that activity files are bulk exported in ~May 2018. If files are exported in ".fit" format they will unfortunately not currently work with process_data.
+
 ```R
 data <- process_data(<gpx file path>)
 ```
@@ -79,6 +81,8 @@ ggsave("plots/map001.png", p2, width = 20, height = 15, units = "cm", dpi = 600)
 ```
 
 ### Plot elevation profiles
+
+Note: Strava changed the way that activity files are bulk exported in ~May 2018. Unfortunately this plot will not work with files exported from Strava after this time.
 
 ```R
 p3 <- plot_elevations(data)
