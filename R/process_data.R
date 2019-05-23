@@ -49,7 +49,7 @@ process_data <- function(path, old_gpx_format = FALSE) {
   }
 
   # Process all the files
-  data <- list.files(path = path, pattern = "*.gpx", full.names = TRUE) %>%
+  data <- mixedsort(list.files(path = path, pattern = "*.gpx", full.names = TRUE)) %>%
     purrr::map_df(process_gpx, .id = "id") %>%
     dplyr::mutate(id = as.integer(id))
 }
