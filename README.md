@@ -47,7 +47,7 @@ The process for downloading data is described on the Strava website here: [https
 ### Install the packages
 
 ```R
-install.packages(c("devtools", "mapproj", "tidyverse"))
+install.packages(c("devtools", "mapproj", "tidyverse", "gtools"))
 devtools::install_github("marcusvolz/strava")
 ```
 
@@ -56,6 +56,7 @@ devtools::install_github("marcusvolz/strava")
 ```R
 library(strava)
 library(tidyverse)
+library(gtools)
 ```
 
 ### Process the data
