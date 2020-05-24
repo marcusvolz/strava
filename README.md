@@ -51,7 +51,7 @@ install.packages(c("devtools", "mapproj", "tidyverse", "gtools"))
 devtools::install_github("marcusvolz/strava")
 ```
 
-### Load the librariy
+### Load the library
 
 ```R
 library(strava)
