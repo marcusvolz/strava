@@ -51,12 +51,10 @@ install.packages(c("devtools", "mapproj", "tidyverse", "gtools"))
 devtools::install_github("marcusvolz/strava")
 ```
 
-### Load the libraries
+### Load the librariy
 
 ```R
 library(strava)
-library(tidyverse)
-library(gtools)
 ```
 
 ### Process the data
@@ -96,8 +94,7 @@ See the following gist: https://gist.github.com/marcusvolz/84d69befef8b912a37814
 
 ### Plot Ridges
 
-See the following gist: https://gist.github.com/marcusvolz/854f3bab1f63aa8a938b5026820682fa
-
-### Plot Ridges
-
-Code to come.
+```R
+p5 <- plot_ridges(data)
+ggsave("plots/ridges001.png", p5, width = 20, height = 20, units = "cm")
+```
