@@ -18,7 +18,7 @@ process_data <- function(path, old_gpx_format = FALSE) {
 
     coords <- XML::xpathSApply(pfile, path = "//trkpt", XML::xmlAttrs)
     # extract the activity type from file name
-    type <- str_match(file, ".*-(.*).gpx")[[2]]
+    type <- stringr::str_match(file, ".*-(.*).gpx")[[2]]
     # Check for empty file.
     if (length(coords) == 0) return(NULL)
     # dist_to_prev computation requires that there be at least two coordinates.
@@ -26,11 +26,11 @@ process_data <- function(path, old_gpx_format = FALSE) {
 
     lat <- as.numeric(coords["lat", ])
     lon <- as.numeric(coords["lon", ])
-    
+
     if (old_gpx_format == TRUE) {
       ele <- as.numeric(XML::xpathSApply(pfile, path = "//trkpt/ele", XML::xmlValue))
     }
-    
+
     time <- XML::xpathSApply(pfile, path = "//trkpt/time", XML::xmlValue)
 
     # Put everything in a data frame
@@ -49,7 +49,7 @@ process_data <- function(path, old_gpx_format = FALSE) {
   }
 
   # Process all the files
-  data <- mixedsort(list.files(path = path, pattern = "*.gpx", full.names = TRUE)) %>%
+  data <- gtools::mixedsort(list.files(path = path, pattern = "*.gpx", full.names = TRUE)) %>%
     purrr::map_df(process_gpx, .id = "id") %>%
     dplyr::mutate(id = as.integer(id))
 }
