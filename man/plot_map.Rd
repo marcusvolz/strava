@@ -4,23 +4,22 @@
 \alias{plot_map}
 \title{Plots activities superimposed on a map}
 \usage{
-plot_map(data, lon_min = -180, lon_max = 180, lat_min = -90,
-  lat_max = 90)
+plot_map(data, lon_min = -180, lon_max = 180, lat_min = -90, lat_max = 90)
 }
 \arguments{
 \item{data}{A data frame output from process_data()}
 
-\item{lon_min}{Minimum longitude}
+\item{lon_min}{Minimum longitude (optional)}
 
-\item{lon_max}{Maximum longitude}
+\item{lon_max}{maximum longitude (optional)}
 
-\item{lat_min}{Minimum latitude}
+\item{lat_min}{Minimum latitude (optional)}
 
-\item{lat_max}{Maximum latitude}
+\item{lat_max}{Maximum latitude (optional)}
+}
+\value{
+A heat map of activities
 }
 \description{
 Plots activities superimposed on a map
-}
-\examples{
-plot_map()
 }
