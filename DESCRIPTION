@@ -3,15 +3,19 @@ Title: Create Artistic Visualisations with your Strava Exercise Data
 Version: 0.0.0.9001
 Authors@R: person("Marcus", "Volz", email = "marcus.volz@outlook.com", role = c("aut", "cre"))
 Description: Creates artistic visualisations with Strava data.
-Depends: R (>= 3.4.3)
-Imports: 
+Depends: 
+    R (>= 3.4.3),
     dplyr,
-    ggplot2,
+    ggplot2
+Imports: 
     purrr,
     sp,
     XML,
-    stringr
+    stringr,
+    magrittr,
+    lubridate,
+    ggridges
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.0
+RoxygenNote: 7.1.0

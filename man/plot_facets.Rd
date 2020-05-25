@@ -4,12 +4,14 @@
 \alias{plot_facets}
 \title{Creates a plot of activities as small multiples}
 \usage{
-plot_facets(data, labels = FALSE)
+plot_facets(data, labels = FALSE, scales = "free")
 }
 \arguments{
 \item{data}{A data frame output from process_data()}
 
 \item{labels}{If TRUE, adds distance labels to each facet}
+
+\item{scales}{If "fixed", track size reflects absolute distance travelled}
 }
 \description{
 Creates a plot of activities as small multiples. The concept behind this plot was originally inspired by \href{https://www.madewithsisu.com/}{Sisu}.
