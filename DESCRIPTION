@@ -14,7 +14,9 @@ Imports:
     stringr,
     magrittr,
     lubridate,
-    ggridges
+    ggridges,
+    ggTimeSeries,
+    ggthemes
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
