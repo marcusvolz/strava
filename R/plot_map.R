@@ -11,18 +11,18 @@
 #' @export
 #'
 #' @examples
-plot_map <- function(data, lon_min = -180, lon_max = 180, lat_min = -90, lat_max = 90) {
+plot_map <- function(data, lon_min = NA, lat_min = NA, lon_max = NA, lat_max = NA) {
   data %>%
-    filter(
-      between(lon, lon_min, lon_max),
-      between(lat, lat_min, lat_max)
-    ) %>%
+    # filter(
+    #   between(lon, lon_min, lon_max),
+    #   between(lat, lat_min, lat_max)
+    # ) %>%
     ggplot(aes(lon, lat, group = id)) +
     geom_path(
       alpha = 0.3,
       size = 0.3,
       lineend = "round"
     ) +
-    coord_map() +
+    coord_map(xlim = c(lon_min, lon_max), ylim = c(lat_min, lat_max)) +
     theme_void()
 }

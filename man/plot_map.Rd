@@ -4,16 +4,16 @@
 \alias{plot_map}
 \title{Plots activities superimposed on a map}
 \usage{
-plot_map(data, lon_min = -180, lon_max = 180, lat_min = -90, lat_max = 90)
+plot_map(data, lon_min = NA, lat_min = NA, lon_max = NA, lat_max = NA)
 }
 \arguments{
 \item{data}{A data frame output from process_data()}
 
 \item{lon_min}{Minimum longitude (optional)}
 
-\item{lon_max}{maximum longitude (optional)}
-
 \item{lat_min}{Minimum latitude (optional)}
+
+\item{lon_max}{maximum longitude (optional)}
 
 \item{lat_max}{Maximum latitude (optional)}
 }
