@@ -24,24 +24,17 @@ plot_calendar <- function(data) {
     ungroup() %>%
     mutate(id = as.numeric(row.names(.)))
 
-  # Generate plot data
-  time_min <- "2011-12-31"
-  time_max <- lubridate::today()
-  max_dist <- 30
-
   daily_data <- summary %>%
     group_by(time) %>%
     summarise(dist = sum(total_dist)) %>%
     ungroup() %>%
-    mutate(time = lubridate::date(time)) %>%
-    filter(complete.cases(.), time > time_min, time < time_max) %>%
-    mutate(dist_scaled = ifelse(dist > max_dist, max_dist, dist))
+    mutate(time = lubridate::date(time))
 
 
   # Create plot
   ggTimeSeries::ggplot_calendar_heatmap(
     daily_data,
-    "time", "dist_scaled",
+    "time", "dist",
     dayBorderSize = 0.5,
     dayBorderColour = "white",
     monthBorderSize = 0.75,
@@ -50,8 +43,17 @@ plot_calendar <- function(data) {
   ) +
     xlab(NULL) +
     ylab(NULL) +
-    scale_fill_continuous(name = "km", low = "#DAE580", high = "#236327", na.value = "#EFEDE0") +
+    scale_fill_continuous(
+      name = "km",
+      low = "#DAE580",
+      high = "#236327",
+      na.value = "#EFEDE0"
+      ) + # trans = "log" if needed
     facet_wrap(~Year, ncol = 1) +
     ggthemes::theme_tufte() +
     theme(strip.text = element_text(), axis.ticks = element_blank(), legend.position = "bottom")
 }
+
+# TODO add missing days
+# TODO add custom color maps
+# TODO refactor code so you will get daily_data easier
