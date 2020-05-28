@@ -90,7 +90,10 @@ ggsave("plots/elevations001.png", p3, width = 20, height = 20, units = "cm")
 
 ### Plot Calendar
 
-See the following gist: https://gist.github.com/marcusvolz/84d69befef8b912a3781478836db9a75
+```R
+p5 <- plot_calendar(data, unit = "distance")
+ggsave("plots/calendar001.png", p5, width = 20, height = 20, units = "cm")
+```
 
 ### Plot Ridges
 
