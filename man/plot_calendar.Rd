@@ -4,10 +4,12 @@
 \alias{plot_calendar}
 \title{Display Strava activities as calendar heat map}
 \usage{
-plot_calendar(data)
+plot_calendar(data, unit = "distance")
 }
 \arguments{
 \item{data}{A data frame output from process_data()}
+
+\item{unit}{A string ("distance" or "time") defining which unit to display}
 }
 \value{
 A plot displaying calendar heat map
