@@ -7,34 +7,14 @@
 #'
 #' @examples
 plot_calendar <- function(data) {
-  summary <- data %>%
-    mutate(
-      time = lubridate::date(data$time),
-      year = strftime(data$time, format = "%Y"),
-      date_without_month = strftime(data$time, format = "%j"),
-      month = strftime(data$time, format = "%m"),
-      day_of_month = strftime(data$time, format = "%d"),
-      year_month = strftime(data$time, format = "%Y-%m")
-    ) %>%
-    group_by(time, year, date_without_month, month, day_of_month, year_month) %>%
-    summarise(total_dist = sum(dist_to_prev), total_time = sum(time_diff_to_prev)) %>%
-    mutate(speed = (total_dist) / (total_time / 60^2)) %>%
-    mutate(pace = (total_time / 60) / (total_dist)) %>%
-    mutate(type = "day") %>%
-    ungroup() %>%
-    mutate(id = as.numeric(row.names(.)))
+  distance_per_date <- data %>%
+    mutate(date = lubridate::date(time)) %>%
+    group_by(date) %>%
+    summarise(dist = sum(dist_to_prev))
 
-  daily_data <- summary %>%
-    group_by(time) %>%
-    summarise(dist = sum(total_dist)) %>%
-    ungroup() %>%
-    mutate(time = lubridate::date(time))
-
-
-  # Create plot
   ggTimeSeries::ggplot_calendar_heatmap(
-    daily_data,
-    "time", "dist",
+    distance_per_date,
+    "date", "dist",
     dayBorderSize = 0.5,
     dayBorderColour = "white",
     monthBorderSize = 0.75,
@@ -53,7 +33,3 @@ plot_calendar <- function(data) {
     ggthemes::theme_tufte() +
     theme(strip.text = element_text(), axis.ticks = element_blank(), legend.position = "bottom")
 }
-
-# TODO add missing days
-# TODO add custom color maps
-# TODO refactor code so you will get daily_data easier
