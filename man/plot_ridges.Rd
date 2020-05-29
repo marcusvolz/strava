@@ -2,16 +2,16 @@
 % Please edit documentation in R/plot_ridges.R
 \name{plot_ridges}
 \alias{plot_ridges}
-\title{Plot ridges of Strava activities}
+\title{Plot ridges of Strava activities by weekdays}
 \usage{
 plot_ridges(data)
 }
 \arguments{
-\item{data}{}
+\item{data}{A data frame output from process_data()}
 }
 \value{
-
+A plot displaying ridges
 }
 \description{
-Plot ridges of Strava activities
+Plot ridges of Strava activities by weekdays
 }
