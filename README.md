@@ -59,7 +59,7 @@ library(strava)
 
 ### Process the data
 
-Note: Strava changed the way that activity files are bulk exported in ~May 2018. If files are exported in ".fit" format they will unfortunately not currently work with process_data.
+Note: Strava changed the way that activity files are bulk exported in ~May 2018. The process_data function only works with gpx files, so if your exported files are in some other format they will need to be converted (or imported into R some other way). One way to do this is to use [GPSBabel](https://www.gpsbabel.org/index.html), which converts between different GPS data formats (e.g. fit to gpx).
 
 ```R
 data <- process_data(<gpx file path>)
