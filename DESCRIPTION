@@ -16,7 +16,10 @@ Imports:
     lubridate,
     ggridges,
     ggTimeSeries,
-    ggthemes
+    ggthemes,
+    packcircles,
+    ggforce,
+    viridis
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
