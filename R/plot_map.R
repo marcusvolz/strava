@@ -13,10 +13,6 @@
 #' @examples
 plot_map <- function(data, lon_min = NA, lat_min = NA, lon_max = NA, lat_max = NA) {
   data %>%
-    # filter(
-    #   between(lon, lon_min, lon_max),
-    #   between(lat, lat_min, lat_max)
-    # ) %>%
     ggplot(aes(lon, lat, group = id)) +
     geom_path(
       alpha = 0.3,
