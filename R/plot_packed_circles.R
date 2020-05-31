@@ -1,55 +1,63 @@
-#' Title
+#' Display Strava activities as packed circles
 #'
-#' @param data
+#' @param data A data frame output from process_data()
+#' @param circle_size A string ("distance" / "duration" / "speed") defining sizes of circles
+#' @param circle_fill A string ("distance" / "duration" / "speed") defining fills of circles
 #'
-#' @return
+#' @return A plot with Strava activities as packed circles
 #' @export
 #'
 #' @examples
-plot_packed_circles <- function(data) {
-  # Function for circle packaging
+plot_packed_circles <- function(data, circle_size = "duration", circle_fill = "distance") {
+  # ---- functions ----
   compute_cluster <- function(cluster_year) {
-    temp <- summary %>%
+    year_summary <- summary %>%
       filter(year == cluster_year)
 
-    packcircles::circleProgressiveLayout(temp$total_dist) %>%
-      cbind(temp)
+    bind_cols(
+      year_summary,
+      packcircles::circleProgressiveLayout(select(year_summary, !!sym(circle_size)))
+    )
   }
 
+  # ---- constants ----
+  possible_values <- c("distance", "duration", "speed")
+  if (!(circle_size %in% possible_values)) {
+    stop("This argument value for `circle_size` is not available! Use 'duration', 'distance', or 'speed' instead!")
+  }
+
+  if (!(circle_fill %in% possible_values)) {
+    stop("This argument value for `circle_fill` is not available! Use 'duration', 'distance', or 'speed' instead!")
+  }
+
+  legend_title <- purrr::set_names(
+    c("distance (km)", "duration (h)", "speed (km/h)"),
+    possible_values
+  )
+
+  # ---- body ----
   summary <- data %>%
-    mutate(
-      time = as.Date(data$time),
-      year = as.integer(strftime(data$time, format = "%Y")),
-      date_without_month = strftime(data$time, format = "%j"),
-      month = strftime(data$time, format = "%m"),
-      day_of_month = strftime(data$time, format = "%d"),
-      year_month = strftime(data$time, format = "%Y-%m")
+    mutate(year = lubridate::year(time)) %>%
+    group_by(year, id) %>%
+    summarise(
+      distance = sum(dist_to_prev),
+      duration = sum(time_diff_to_prev) / 60^2,
+      speed = distance / duration
     ) %>%
-    group_by(time, year, date_without_month, month, day_of_month, year_month) %>%
-    summarise(total_dist = sum(dist_to_prev), total_time = sum(time_diff_to_prev)) %>%
-    mutate(
-      speed = (total_dist) / (total_time / 60^2),
-      pace = (total_time / 60) / (total_dist),
-      type = "day"
-    ) %>%
-    ungroup() %>%
-    mutate(id = as.numeric(row.names(.)))
+    ungroup()
 
-  # Create packed circles by year
-  result <- seq(min(summary$year), max(summary$year)) %>%
-    purrr::map_df(~ compute_cluster(.x), .id = "id2") %>%
-    mutate(speed = total_dist / total_time)
+  plot_data <- purrr::map_df(seq(min(summary$year), max(summary$year)), compute_cluster)
 
-  # Create plot
-  ggplot() +
-    ggforce::geom_circle(aes(x0 = x, y0 = y, r = radius, fill = speed), result, size = 0.25) +
-    viridis::scale_fill_viridis(option = "D", direction = 1, name = "speed (km/h)") +
+  ggplot(plot_data) +
+    ggforce::geom_circle(aes(x0 = x, y0 = y, r = radius, fill = !!sym(circle_fill)),
+      size = 0.25
+    ) +
+    viridis::scale_fill_viridis(name = legend_title[circle_fill]) +
     facet_wrap(~year, strip.position = "bottom") +
     coord_equal() +
     ggforce::theme_no_axes() +
     theme(
       strip.text = element_text(), legend.position = "right", panel.spacing = unit(2, "lines"),
       panel.border = element_blank(), strip.background = element_blank()
-    ) +
-    ggtitle("Strava runs as packed circles", subtitle = "Run distance mapped to circle area")
+    )
 }
