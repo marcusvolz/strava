@@ -88,16 +88,23 @@ p3 <- plot_elevations(data)
 ggsave("plots/elevations001.png", p3, width = 20, height = 20, units = "cm")
 ```
 
-### Plot Calendar
+### Plot calendar
 
 ```R
 p5 <- plot_calendar(data, unit = "distance")
 ggsave("plots/calendar001.png", p5, width = 20, height = 20, units = "cm")
 ```
 
-### Plot Ridges
+### Plot ridges
 
 ```R
 p5 <- plot_ridges(data)
 ggsave("plots/ridges001.png", p5, width = 20, height = 20, units = "cm")
+```
+
+### Plot packed circles
+
+```R
+p6 <- plot_packed_circles(data)
+ggsave("plots/packed_circles001.png", p6, width = 20, height = 20, units = "cm")
 ```
