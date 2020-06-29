@@ -91,7 +91,7 @@ ggsave("plots/elevations001.png", p3, width = 20, height = 20, units = "cm")
 ### Plot calendar
 
 ```R
-p5 <- plot_calendar(data, unit = "distance")
+p4 <- plot_calendar(data, unit = "distance")
 ggsave("plots/calendar001.png", p5, width = 20, height = 20, units = "cm")
 ```
 
