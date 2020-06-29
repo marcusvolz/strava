@@ -92,7 +92,7 @@ ggsave("plots/elevations001.png", p3, width = 20, height = 20, units = "cm")
 
 ```R
 p4 <- plot_calendar(data, unit = "distance")
-ggsave("plots/calendar001.png", p5, width = 20, height = 20, units = "cm")
+ggsave("plots/calendar001.png", p4, width = 20, height = 20, units = "cm")
 ```
 
 ### Plot ridges
