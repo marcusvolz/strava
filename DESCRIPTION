@@ -6,7 +6,9 @@ Description: Creates artistic visualisations with Strava data.
 Depends: 
     R (>= 3.4.3),
     dplyr,
-    ggplot2
+    ggplot2,
+    gtools,
+    mapproj
 Imports: 
     purrr,
     sp,
