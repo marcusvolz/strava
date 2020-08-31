@@ -6,8 +6,6 @@
 #'
 #' @return A plot with Strava activities as packed circles
 #' @export
-#'
-#' @examples
 plot_packed_circles <- function(data, circle_size = "duration", circle_fill = "distance") {
   # ---- functions ----
   compute_cluster <- function(cluster_year) {

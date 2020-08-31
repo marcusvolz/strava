@@ -14,6 +14,3 @@ plot_elevations(data, scale_free_y = FALSE)
 \description{
 Creates a plot of elevation profiles as small multiples
 }
-\examples{
-plot_elevations()
-}
