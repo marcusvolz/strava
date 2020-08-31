@@ -9,8 +9,6 @@
 #'
 #' @return A heat map of activities
 #' @export
-#'
-#' @examples
 plot_map <- function(data, lon_min = NA, lat_min = NA, lon_max = NA, lat_max = NA) {
   data %>%
     ggplot(aes(lon, lat, group = id)) +

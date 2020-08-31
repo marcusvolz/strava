@@ -5,9 +5,6 @@
 #' @param scale_free_y If TRUE, the y-scale is "free"; otherwise it is "fixed"
 #' @keywords
 #' @export
-#' @examples
-#' plot_elevations()
-
 plot_elevations <- function(data, scale_free_y = FALSE) {
   # Compute total distance for each activity
   dist <- data %>%
