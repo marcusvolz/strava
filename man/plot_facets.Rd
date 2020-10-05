@@ -16,6 +16,3 @@ plot_facets(data, labels = FALSE, scales = "free")
 \description{
 Creates a plot of activities as small multiples. The concept behind this plot was originally inspired by \href{https://www.madewithsisu.com/}{Sisu}.
 }
-\examples{
-plot_facets()
-}

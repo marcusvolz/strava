@@ -5,8 +5,6 @@
 #'
 #' @return A plot displaying calendar heat map
 #' @export
-#'
-#' @examples
 plot_calendar <- function(data, unit = "distance") {
   if (!(unit %in% c("distance", "time"))) {
     stop("This unit doesn't exist! Use 'time' or 'distance' instead!")

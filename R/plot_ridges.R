@@ -4,8 +4,6 @@
 #'
 #' @return A plot displaying ridges
 #' @export
-#'
-#' @examples
 plot_ridges <- function(data) {
   # Function for processing an activity on a minute-by-minute basis; active = 1, not active = 0
   compute_day_curve <- function(df_row) {

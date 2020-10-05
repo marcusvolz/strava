@@ -6,9 +6,6 @@
 #' @param scales If "fixed", track size reflects absolute distance travelled
 #' @keywords
 #' @export
-#' @examples
-#' plot_facets()
-
 plot_facets <- function(data, labels = FALSE, scales = "free") {
   # Summarise data
   summary <- data %>%
@@ -16,7 +13,7 @@ plot_facets <- function(data, labels = FALSE, scales = "free") {
     dplyr::summarise(lon = mean(range(lon)),
                      lat = mean(range(lat)),
                      distance = sprintf("%.1f", max(cumdist)))
-  
+
   # Decide if tracks will all be scaled to similar size ("free") or if
   # track sizes reflect absolute distance in each dimension ("fixed")
   if (scales == "fixed") {
@@ -36,7 +33,7 @@ plot_facets <- function(data, labels = FALSE, scales = "free") {
                    strip.background = ggplot2::element_blank(),
                    strip.text = ggplot2::element_blank(),
                    plot.margin = ggplot2::unit(rep(1, 4), "cm"))
-  
+
   if (scales == "fixed") {
     p <- p + ggplot2::coord_fixed() # make aspect ratio == 1
   }

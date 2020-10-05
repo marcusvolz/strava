@@ -5,9 +5,6 @@
 #' @param old_gpx_format If TRUE, uses the old format for gpx files (for files bulk exported from Strava prior to ~May 2018)
 #' @keywords
 #' @export
-#' @examples
-#' process_data()
-
 process_data <- function(path, old_gpx_format = FALSE) {
   # Function for processing a Strava gpx file
   process_gpx <- function(file) {
