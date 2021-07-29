@@ -17,7 +17,6 @@ Imports:
     magrittr,
     lubridate,
     ggridges,
-    ggTimeSeries,
     ggthemes,
     packcircles,
     ggforce,
