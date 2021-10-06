@@ -16,8 +16,8 @@ plot_ridges <- function(data) {
                                     by = 60
     )) %>%
       mutate(
-        time_end = lead(time, default = as.POSIXct("23:59:59", format = "%H:%M:%S")),
-        active = ifelse(time > start & time_end < end, 1, 0), wday = wday
+        end_time = lead(time, default = as.POSIXct("23:59:59", format = "%H:%M:%S")),
+        active = ifelse(time > start & end_time < end, 1, 0), wday = wday
       )
 
     result
