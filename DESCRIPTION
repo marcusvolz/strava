@@ -18,8 +18,10 @@ Imports:
     lubridate,
     ggridges,
     ggthemes,
+    ggTimeSeries,
     packcircles,
     ggforce,
+    tidyr,
     viridis
 License: MIT + file LICENSE
 Encoding: UTF-8
