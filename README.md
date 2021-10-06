@@ -8,27 +8,27 @@ Create artistic visualisations with your Strava exercise data
 
 A plot of activities as small multiples. The concept behind this plot was originally inspired by [Sisu](https://www.madewithsisu.com/).
 
-![facets](https://github.com/marcusvolz/strava/blob/master/plots/facets001.png "Facets, showing activity outlines")
+![facets](https://github.com/marcusvolz/strava/blob/master/inst/plots/facets001.png "Facets, showing activity outlines")
 
 ### Map
 
-![map](https://github.com/marcusvolz/strava/blob/master/plots/map001.png "Map, showing activities on a map")
+![map](https://github.com/marcusvolz/strava/blob/master/inst/plots/map001.png "Map, showing activities on a map")
 
 ### Elevations
 
-![map](https://github.com/marcusvolz/strava/blob/master/plots/elevations001.png "Facets, showing elevation profiles")
+![map](https://github.com/marcusvolz/strava/blob/master/inst/plots/elevations001.png "Facets, showing elevation profiles")
 
 ### Calendar
 
-![map](https://github.com/marcusvolz/strava/blob/master/plots/calendar001.png "Calendar map")
+![map](https://github.com/marcusvolz/strava/blob/master/inst/plots/calendar001.png "Calendar map")
 
 ### Ridges
 
-![map](https://github.com/marcusvolz/strava/blob/master/plots/ridges001.png "Ridges")
+![map](https://github.com/marcusvolz/strava/blob/master/inst/plots/ridges001.png "Ridges")
 
 ### Packed circles
 
-![map](https://github.com/marcusvolz/strava/blob/master/plots/circles001.png "Packed circles")
+![map](https://github.com/marcusvolz/strava/blob/master/inst/plots/circles001.png "Packed circles")
 
 ## How to use
 
