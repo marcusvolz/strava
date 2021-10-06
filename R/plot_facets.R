@@ -4,7 +4,6 @@
 #' @param data A data frame output from process_data()
 #' @param labels If TRUE, adds distance labels to each facet
 #' @param scales If "fixed", track size reflects absolute distance travelled
-#' @keywords
 #' @export
 plot_facets <- function(data, labels = FALSE, scales = "free") {
   # Summarise data
