@@ -3,7 +3,6 @@
 #' Creates a plot of elevation profiles as small multiples
 #' @param data A data frame output from process_data()
 #' @param scale_free_y If TRUE, the y-scale is "free"; otherwise it is "fixed"
-#' @keywords
 #' @export
 plot_elevations <- function(data, scale_free_y = FALSE) {
   # Compute total distance for each activity
