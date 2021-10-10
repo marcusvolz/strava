@@ -3,28 +3,6 @@ on: [push, pull_request, workflow_dispatch]
 name: check
 
 jobs:
-  coverage:
-    runs-on: ubuntu-latest
-    env:
-      # Tests that are skip_on_cran() still included in coverage report.
-      NOT_CRAN: true
-    steps:
-      - uses: actions/checkout@v2
-      - uses: r-lib/actions/setup-r@v1
-      - uses: r-lib/actions/setup-pandoc@v1
-      - name: Install Ubuntu dependencies
-        run: |
-          sudo apt-get install libcurl4-openssl-dev libharfbuzz-dev libfribidi-dev
-      - uses: r-lib/actions/setup-r-dependencies@v1
-        with:
-          extra-packages: covr
-      - name: Install package
-        run: |
-          R CMD INSTALL .
-      - name: Check test coverage
-        run: covr::codecov()
-        shell: Rscript {0}
-
   check:
     runs-on: ${{ matrix.config.os }}
 
