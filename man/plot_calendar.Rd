@@ -17,3 +17,7 @@ A plot displaying calendar heat map
 \description{
 Display Strava activities as calendar heat map
 }
+\examples{
+running <- process_data(system.file("gpx/running", package = "strava"))
+plot_calendar(running)
+}
