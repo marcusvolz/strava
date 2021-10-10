@@ -2,6 +2,7 @@
 #' @import ggplot2
 #' @import gtools
 #' @import mapproj
+#' @importFrom ggTimeSeries ggplot_calendar_heatmap
 #' @importFrom stats end start time
 NULL
 

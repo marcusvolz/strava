@@ -28,7 +28,7 @@ plot_calendar <- function(data, unit = "distance") {
       fill = list(dist = NA)
     )
 
-  ggTimeSeries::ggplot_calendar_heatmap(
+  ggplot_calendar_heatmap(
     unit_per_date,
     "date", "unit",
     dayBorderSize = 0.5,
