@@ -66,6 +66,15 @@ Note: Strava changed the way that activity files are bulk exported in ~May 2018.
 data <- process_data(<path to folder with gpx files>)
 ```
 
+There are some sample data included with the package:
+
+```R
+# Sample running data.
+running <- process_data(system.file("gpx/running", package = "strava"))
+# Sample cycling data.
+cycling <- process_data(system.file("gpx/cycling", package = "strava"))
+```
+
 ### Plot activities as small multiples
 
 ```R
