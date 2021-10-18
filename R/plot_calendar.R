@@ -5,6 +5,10 @@
 #'
 #' @return A plot displaying calendar heat map
 #' @export
+#'
+#' @examples
+#' running <- process_data(system.file("gpx/running", package = "strava"))
+#' plot_calendar(running)
 plot_calendar <- function(data, unit = "distance") {
   if (!(unit %in% c("distance", "time"))) {
     stop("This unit doesn't exist! Use 'time' or 'distance' instead!")
@@ -24,7 +28,7 @@ plot_calendar <- function(data, unit = "distance") {
       fill = list(dist = NA)
     )
 
-  ggTimeSeries::ggplot_calendar_heatmap(
+  ggplot_calendar_heatmap(
     unit_per_date,
     "date", "unit",
     dayBorderSize = 0.5,
