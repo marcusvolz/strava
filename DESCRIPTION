@@ -44,6 +44,5 @@ Suggests:
     knitr,
     testthat
 VignetteBuilder: knitr
-RoxygenNote: 7.1.1
 Remotes:  
     AtherEnergy/ggTimeSeries
