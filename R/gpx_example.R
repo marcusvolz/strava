@@ -1,9 +1,9 @@
-#' Get an example gpx
+#' Get an example GPX
 #'
-#' Get an exampe gpx file from the package
+#' Get an example GPX file from the package
 #'
-#' @param name Name of the gpx file. Leave blank to display the list of
-#' examples
+#' @param name Name of the GPX file. Leave blank to display the list of
+#' examples.
 #'
 #' @export
 #' @examples
@@ -29,7 +29,7 @@ gpx_example <- function(name = NULL) {
       cycling = list.files(
         path = system.file(
           "gpx",
-          "running",
+          "cycling",
           package = "strava"
         ),
         pattern = "gpx",
