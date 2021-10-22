@@ -75,6 +75,15 @@ running <- process_data(system.file("gpx/running", package = "strava"))
 cycling <- process_data(system.file("gpx/cycling", package = "strava"))
 ```
 
+You can also list them all or get the path to a specific one using its name:
+
+```R
+# List all the examples (no argument)
+gpx_example()
+# Get a specific gpx (using its partial or full name)
+gpx_example("734")
+```
+
 ### Plot activities as small multiples
 
 ```R
