@@ -13,7 +13,11 @@ Authors@R:
     person(given = "Megan",
            family = "Beckett",
            role = c("ctb"),
-           email = "megan@fathomdata.dev"))
+           email = "megan@fathomdata.dev"),
+    person(given = "Bálint",
+           family = "Komjáti",
+           role = c("ctb"),
+           email = "bkomjati@gmail.com"))
 Description: Creates artistic visualisations with Strava data.
 Depends: 
     R (>= 3.4.3),
@@ -34,7 +38,10 @@ Imports:
     packcircles,
     ggforce,
     tidyr,
-    viridis
+    viridis,
+    rayshader,
+    geoviz,
+    raster
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
