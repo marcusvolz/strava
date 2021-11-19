@@ -6,7 +6,7 @@
 \usage{
 plot_3D(
   tracklog_file = "gpx/mtb",
-  cache_folder = "cache_plot_3D",
+  cache_folder = "~/cache_plot_3D",
   elevation_scale = 6,
   elevation_scale_tracklog_corr = 0.01,
   buffer_around_tracklog_km = 1,
@@ -14,7 +14,8 @@ plot_3D(
   sunangle = 250,
   sunaltitude = 75,
   color_tracklog = "blue",
-  color_background = "lightskyblue1"
+  color_background = "lightskyblue1",
+  water_detect = FALSE
 )
 }
 \arguments{
@@ -30,22 +31,25 @@ Useful if tracklog occasionally disappears into the ground.}
 
 \item{buffer_around_tracklog_km}{Buffer distance around the tracklog in km. Scene is cut outside this.}
 
-\item{render_high_quality}{x}
+\item{render_high_quality}{If set to TRUE the function downloads higher resolution elevation and overlay data.
+And calculates ambient shadows as well. All steps are time and resource consuming.}
 
-\item{sunangle}{x}
+\item{sunangle}{The direction of the light source of the scene}
 
-\item{sunaltitude}{x}
+\item{sunaltitude}{The angle, in degrees (as measured from the horizon) from which the light originates.}
 
-\item{color_tracklog}{x}
+\item{color_tracklog}{Color of the tracklog on the scene.}
 
-\item{color_background}{x}
-}
-\value{
+\item{color_background}{Color of the scene's background.}
 
+\item{water_detect}{If set to TRUE rayshader will look for flat surfaces in the scene and render them in blue}
 }
 \description{
 Create 3D interactive elevation map from gpx tracklogs
 }
 \examples{
-x
+\dontrun{
+# Generate a built in demo by simply running
+strava::plot_3D()
+}
 }

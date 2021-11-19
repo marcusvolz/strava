@@ -1,7 +1,4 @@
-
 #' Create 3D interactive elevation map from gpx tracklogs
-#'
-#'
 #'
 #' @param tracklog_file A path to a gpx file to be read by strava::process_data.
 #' If the file covers a big area plot_3D() can slow down significantly.
@@ -10,19 +7,26 @@
 #' @param elevation_scale_tracklog_corr Raises elevation_scale for the tracklog by the specified percentage.
 #' Useful if tracklog occasionally disappears into the ground.
 #' @param buffer_around_tracklog_km Buffer distance around the tracklog in km. Scene is cut outside this.
-#' @param render_high_quality x
-#' @param sunangle x
-#' @param sunaltitude x
-#' @param color_tracklog x
-#' @param color_background x
+#' @param render_high_quality If set to TRUE the function downloads higher resolution elevation and overlay data.
+#' And calculates ambient shadows as well. All steps are time and resource consuming.
+#' @param sunangle The direction of the light source of the scene
+#' @param sunaltitude The angle, in degrees (as measured from the horizon) from which the light originates.
+#' @param color_tracklog Color of the tracklog on the scene.
+#' @param color_background Color of the scene's background.
+#' @param water_detect If set to TRUE rayshader will look for flat surfaces in the scene and render them in blue
 #'
 #' @export
-#' @import geoviz rayshader raster
+#' @import geoviz rayshader magick
+#' @importFrom raster raster writeRaster extract extent
 #'
-#' @examples x
+#' @examples
+#' \dontrun{
+#' # Generate a built in demo by simply running
+#' strava::plot_3D()
+#' }
 plot_3D <- function(
                      tracklog_file = "gpx/mtb",
-                     cache_folder = "cache_plot_3D",
+                     cache_folder = "~/cache_plot_3D",
                      elevation_scale = 6, #
                      elevation_scale_tracklog_corr = .01,
                      buffer_around_tracklog_km = 1,
@@ -30,11 +34,10 @@ plot_3D <- function(
                      sunangle = 250,
                      sunaltitude = 75,
                      color_tracklog = 'blue',
-                     color_background = 'lightskyblue1'
+                     color_background = 'lightskyblue1',
+                     water_detect = FALSE
                     ) {
 
-  #TODO roxygen comments, examples
-  #TODO add render_high_quality switch
   #TODO ambient shadows
   #TODO tests: with an other gpx, delete cache folder, multiple logs, hq
 
@@ -107,14 +110,14 @@ plot_3D <- function(
 
   scene <- elmat %>%
     rayshader::sphere_shade(sunangle = sunangle) %>%
-    #rayshader::add_water(rayshader::detect_water(elmat), color = "lightblue") %>%
+    { if (water_detect) rayshader::add_water(rayshader::detect_water(elmat), color = "lightblue") else . } %>%
     rayshader::add_shadow(rayshader::ray_shade(elmat,
                                                sunangle = sunangle,
                                                sunaltitude = sunaltitude,
                                                zscale = elevation_scale,
                                                multicore = FALSE),
                           max_darken = 0.2) %>%
-    #add_shadow(ambientshadows, max_darken = 0.1) %>%
+    { if (render_high_quality) rayshader::add_shadow(rayshader::ambient_shade(elmat), max_darken = 0.1) else . } %>%
     rayshader::add_shadow(rayshader::lamb_shade(elmat,zscale = elevation_scale, sunaltitude = 3),
                           max_darken = 0.5) %>%
     rayshader::add_overlay(overlay_image, alphalayer = .6)

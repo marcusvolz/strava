@@ -41,6 +41,7 @@ Imports:
     viridis,
     rayshader,
     geoviz,
+    magick,
     raster
 License: MIT + file LICENSE
 Encoding: UTF-8
