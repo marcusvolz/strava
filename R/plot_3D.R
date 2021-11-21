@@ -8,7 +8,7 @@
 #' Useful if tracklog occasionally disappears into the ground.
 #' @param buffer_around_tracklog_km Buffer distance around the tracklog in km. Scene is cut outside this.
 #' @param render_high_quality If set to TRUE the function downloads higher resolution elevation and overlay data.
-#' And calculates ambient shadows as well. All steps are time and resource consuming.
+#' All steps are very time and resource consuming.
 #' @param sunangle The direction of the light source of the scene
 #' @param sunaltitude The angle, in degrees (as measured from the horizon) from which the light originates.
 #' @param color_tracklog Color of the tracklog on the scene.
@@ -37,13 +37,6 @@ plot_3D <- function(
                      color_background = 'lightskyblue1',
                      water_detect = FALSE
                     ) {
-
-  #TODO ambient shadows
-  #TODO tests: with an other gpx, delete cache folder, multiple logs, hq
-
-  #added own tracklog gpx with hilly scene
-  #into separate folder bc process_data reads in all file
-  #w/o explicit reference only arbitrary id number)
 
   if (!file.exists(cache_folder)) dir.create(cache_folder)
   dem_file     <- paste0(cache_folder, "/dem"          ,if(render_high_quality) "_hq")
@@ -117,7 +110,6 @@ plot_3D <- function(
                                                zscale = elevation_scale,
                                                multicore = FALSE),
                           max_darken = 0.2) %>%
-    { if (render_high_quality) rayshader::add_shadow(rayshader::ambient_shade(elmat), max_darken = 0.1) else . } %>%
     rayshader::add_shadow(rayshader::lamb_shade(elmat,zscale = elevation_scale, sunaltitude = 3),
                           max_darken = 0.5) %>%
     rayshader::add_overlay(overlay_image, alphalayer = .6)
