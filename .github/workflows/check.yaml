@@ -15,12 +15,12 @@ jobs:
           - {os: windows-latest, r: 'release'}
           - {os: macOS-latest, r: 'release'}
           - {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04, r: 'devel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest", http-user-agent: "R/4.1.0 (ubuntu-20.04) R (4.1.0 x86_64-pc-linux-gnu x86_64 linux-gnu) on GitHub Actions" }
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RSPM: ${{ matrix.config.rspm }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      RGL_USE_NULL: true
 
     steps:
       - uses: actions/checkout@v2
@@ -34,15 +34,11 @@ jobs:
       - name: Install system dependencies
         if: runner.os == 'Linux'
         run: |
-          sudo apt-get install -y libicu-dev libxml2-dev libcurl4-openssl-dev
+          sudo apt-get install -y libicu-dev libxml2-dev libcurl4-openssl-dev libmagick++-dev libgdal-dev libgeos-dev libproj-dev
 
-      - name: "Install dependencies"
-        run: |
-          install.packages("remotes")
-          remotes::install_github("AtherEnergy/ggTimeSeries", dependencies = TRUE)
-          remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
-        shell: Rscript {0}
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: rcmdcheck
 
       - uses: r-lib/actions/check-r-package@v1
 
