@@ -2,11 +2,13 @@
 
 Create artistic visualisations with your Strava exercise data
 
+For the Python version see https://github.com/marcusvolz/strava_py
+
 ## Examples
 
 ### Facets
 
-A plot of activities as small multiples. The concept behind this plot was originally inspired by [Sisu](https://www.madewithsisu.com/).
+A plot of activities as small multiples. The concept behind this plot was originally inspired by [Sisu](https://twitter.com/madewithsisu).
 
 ![facets](https://github.com/marcusvolz/strava/blob/master/inst/plots/facets001.png "Facets, showing activity outlines")
 
