@@ -5,7 +5,7 @@
 \title{Create 3D interactive elevation map from gpx tracklogs}
 \usage{
 plot_3D(
-  tracklog_file = "gpx/mtb",
+  tracklog_folder = NULL,
   cache_folder = "~/cache_plot_3D",
   elevation_scale = 6,
   elevation_scale_tracklog_corr = 0.01,
@@ -19,8 +19,11 @@ plot_3D(
 )
 }
 \arguments{
-\item{tracklog_file}{A path to a gpx file to be read by strava::process_data.
-If the file covers a big area plot_3D() can slow down significantly.}
+\item{tracklog_folder}{The path to the folder of your gpx file to be read by strava::process_data().
+process_data() will read all gpx files from this folder and plot_3D() will plot them all.
+It is however recommended to PLACE ONLY ONE GPX file within the folder.
+If the tracks cover an extended area plot_3D() can slow down significantly.
+If tracklog_folder is undefined plot_3D() loads an example tracklog provided with the package.}
 
 \item{cache_folder}{Directory to store the downloaded elevation data and overlay image for reuse}
 
@@ -32,7 +35,7 @@ Useful if tracklog occasionally disappears into the ground.}
 \item{buffer_around_tracklog_km}{Buffer distance around the tracklog in km. Scene is cut outside this.}
 
 \item{render_high_quality}{If set to TRUE the function downloads higher resolution elevation and overlay data.
-And calculates ambient shadows as well. All steps are time and resource consuming.}
+All steps are very time and resource consuming.}
 
 \item{sunangle}{The direction of the light source of the scene}
 
