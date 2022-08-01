@@ -191,6 +191,6 @@ ggsave("plots/week_history_plot.png", p10, width = 25, height = 15, unit = "cm")
 ### Plot individual map
 
 ```R
-p11 <- individual_plot_map(activities)
+p11 <- individual_plot_map(data)
 ggsave("plots/individual_plot_map.png", p11, width = 20, height = 20, unit = "cm")
 ```
