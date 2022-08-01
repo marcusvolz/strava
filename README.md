@@ -32,6 +32,26 @@ A plot of activities as small multiples. The concept behind this plot was origin
 
 ![map](https://github.com/marcusvolz/strava/blob/master/inst/plots/circles001.png "Packed circles")
 
+### Activities by year ridges
+
+![map](https://github.com/marcusvolz/strava/blob/master/inst/plots/year_history_ridges_Count.png "Activities by year ridges")
+
+### Activities by year
+
+![map](https://github.com/marcusvolz/strava/blob/master/inst/plots/year_history_plot_default.png "Activities by year")
+
+### Activities by month
+
+![map](https://github.com/marcusvolz/strava/blob/master/inst/plots/month_history_plot_Last_12_months.png "Activities by month")
+
+### Activities by week
+
+![map](https://github.com/marcusvolz/strava/blob/master/inst/plots/week_history_plot_Ride.png "Activities by week")
+
+### Individual activity map
+
+![map](https://github.com/marcusvolz/strava/blob/master/inst/plots/individual_plot_map.png "Individual activity map")
+
 ## How to use
 
 ### Bulk export from Strava
@@ -49,7 +69,7 @@ The process for downloading data is described on the Strava website here: [https
 ### Install the packages
 
 ```R
-install.packages(c("devtools", "mapproj", "tidyverse", "gtools"))
+install.packages(c("devtools", "mapproj", "tidyverse", "gtools", "lubridate", "wesanderson", "ggmap", "patchwork"))
 devtools::install_github("marcusvolz/strava")
 devtools::install_github("AtherEnergy/ggTimeSeries")
 ```
@@ -128,4 +148,39 @@ ggsave("plots/ridges001.png", p5, width = 20, height = 20, units = "cm")
 ```R
 p6 <- plot_packed_circles(data)
 ggsave("plots/packed_circles001.png", p6, width = 20, height = 20, units = "cm")
+```
+
+### Plot year history ridges
+
+```R
+p7 <- year_history_ridges(activities)
+ggsave("plots/year_history_ridges.png", p7, width = 20, height = 20, unit = "cm")
+```
+
+### Plot year history
+
+```R
+p8 <- year_history_plot(activities)
+ggsave("plots/year_history_plot.png", p8, width = 25, height = 20, unit = "cm")
+```
+
+### Plot month history
+
+```R
+p9 <- month_history_plot(activities)
+ggsave("plots/month_history_plot.png", p9, width = 25, height = 15, unit = "cm")
+```
+
+### Plot week history
+
+```R
+p10 <- week_history_plot(activities)
+ggsave("plots/week_history_plot.png", p10, width = 25, height = 15, unit = "cm")
+```
+
+### Plot individual map
+
+```R
+p11 <- individual_plot_map(activities)
+ggsave("plots/individual_plot_map.png", p11, width = 20, height = 20, unit = "cm")
 ```
