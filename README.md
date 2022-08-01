@@ -34,19 +34,19 @@ A plot of activities as small multiples. The concept behind this plot was origin
 
 ### Activities by year ridges
 
-![map](https://github.com/Vosbrucke/strava/blob/master/inst/plots/year_history_ridges_Count.png "Activities by year ridges")
+![map](https://github.com/Vosbrucke/strava/blob/master/inst/plots/year_history_ridges.png "Activities by year ridges")
 
 ### Activities by year
 
-![map](https://github.com/Vosbrucke/strava/blob/master/inst/plots/year_history_plot_default.png "Activities by year")
+![map](https://github.com/Vosbrucke/strava/blob/master/inst/plots/year_history_plot.png "Activities by year")
 
 ### Activities by month
 
-![map](https://github.com/Vosbrucke/strava/blob/master/inst/plots/month_history_plot_Last_12_months.png "Activities by month")
+![map](https://github.com/Vosbrucke/strava/blob/master/inst/plots/month_history_plot.png "Activities by month")
 
 ### Activities by week
 
-![map](https://github.com/Vosbrucke/strava/blob/master/inst/plots/week_history_plot_Ride.png "Activities by week")
+![map](https://github.com/Vosbrucke/strava/blob/master/inst/plots/week_history_plot.png "Activities by week")
 
 ### Individual activity map
 
@@ -86,6 +86,16 @@ Note: Strava changed the way that activity files are bulk exported in ~May 2018.
 
 ```R
 data <- process_data(<path to folder with gpx files>)
+```
+
+Load activities data
+```R
+activities <- process_activities(<path to activities.csv file>)
+```
+
+Join data with activities
+```R
+data <- join_data_activities()
 ```
 
 There are some sample data included with the package:
