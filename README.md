@@ -88,12 +88,18 @@ Note: Strava changed the way that activity files are bulk exported in ~May 2018.
 data <- process_data(<path to folder with gpx files>)
 ```
 
+Note: In order to run year_history_ridges, year_history_plot, month_history_plot, week_history_plot you need to first run process activities and then join_data_activities functions. 
+
 Load activities data
+
+Functions dependent on process_activities data (year_history_ridges, year_history_plot, month_history_plot, week_history_plot) come with default arguments. The output can be modifited by unit (Count, Distance, Time), available activity type (e.g. Ride, Run, Walk or other), date and other. 
+
 ```R
 activities <- process_activities(<path to activities.csv file>)
 ```
 
 Join data with activities
+
 ```R
 data <- join_data_activities()
 ```
@@ -189,6 +195,15 @@ ggsave("plots/week_history_plot.png", p10, width = 25, height = 15, unit = "cm")
 ```
 
 ### Plot individual map
+You need to register your Google API key first to run this function as it relies on ggmap package. This can be done on a temporary basis with register_google(key = "[your key]") or permanently using register_google(key = "[your key]", write = TRUE). As described on LITTLE MISS DATA page [https://www.littlemissdata.com/blog/maps] in order to access your own API you need to follow those steps:
+
+1. Visit - https://console.cloud.google.com and sign up for a google cloud platform trial.
+2. Create a project. In the top nav, you can either select an existing project or create a new one.
+3. Add the “Maps Static API” service to the project. Navigate to the library of API services and search for “Maps Static API”. Enable the service.
+4. Generate an API Key. Navigate to the credentials area and select “Create credentials”. Take note of your API key. You will need to register it with the package later.
+5. Run register_google(key = "[your key]") command.
+
+For futher details you can also see ggmap readme here: [https://cran.r-project.org/web/packages/ggmap/readme/README.html]
 
 ```R
 p11 <- individual_plot_map(data)
