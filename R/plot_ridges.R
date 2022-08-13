@@ -41,15 +41,18 @@ plot_ridges <- function(data) {
 
   plot_data$wday <- factor(plot_data$wday, levels = rev(levels(plot_data$wday)))
 
+  palette <- wesanderson::wes_palette("Zissou1", n = 7, type ="continuous")
+
   # Create plot
   p <- ggplot() +
-    ggridges::geom_density_ridges(aes(x = time, y = wday), plot_data, size = 0.5) +
+    ggridges::geom_density_ridges(aes(x = time, y = wday, fill = wday), plot_data, size = 0.5, show.legend = FALSE) +
     ggridges::theme_ridges() +
     scale_y_discrete(expand = c(0.01, 0), labels = c("Sun", "Sat", "Fri", "Thu", "Wed", "Tue", "Mon")) +
     scale_x_datetime(expand = c(0, 0), date_labels = "%I:%M %p") +
     theme(panel.grid = element_blank(), plot.margin = unit(rep(1, 4), "cm")) +
     xlab(NULL) +
-    ylab(NULL)
+    ylab(NULL) +
+    scale_fill_manual(values = palette)
 
   p
 }
