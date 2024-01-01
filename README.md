@@ -1,8 +1,8 @@
 # Strava
 
-Create artistic visualisations with your Strava exercise data
+Note: This package has not been actively maintained for some time. If you are familiar with Python please consider using the Python version which is available at https://github.com/marcusvolz/strava_py
 
-For the Python version see https://github.com/marcusvolz/strava_py
+Create artistic visualisations with your Strava exercise data
 
 ## Examples
 
